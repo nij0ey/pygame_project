@@ -35,28 +35,28 @@ def create_cheese():
     while True:
         x = random.randint(0, 800 - size)
         y = random.randint(0, 600 - size)
-        key_rect = pygame.Rect(x, y, size, size)
+        cheese_rect = pygame.Rect(x, y, size, size)
 
         overlaps = False
         # 고정 장애물과의 충돌 확인
         for obs in obstacles:
-            if key_rect.colliderect(obs):
+            if cheese_rect.colliderect(obs):
                 overlaps = True
                 break
         # 움직이는 장애물과의 충돌 확인
-        if key_rect.colliderect(moving_obs):
+        if cheese_rect.colliderect(moving_obs):
             overlaps = True
             break
 
         if not overlaps:
-            return key_rect
+            return cheese_rect
 
 # 초기 치즈 생성
 cheese = create_cheese()
 score = 0
 
 # 제한 시간 설정
-TOTAL_TIME = 60
+TOTAL_TIME = 30
 start_time = time.time()
 
 # 게임 상태 변수
